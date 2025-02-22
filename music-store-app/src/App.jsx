@@ -1,7 +1,16 @@
 import React from "react";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Shop from "./components/Shop";
 
 const App = () => {
-  return <div className="text-3xl text-red-500">App</div>;
+  return (
+    <>
+      <Navbar count={0} />
+      {/* <Home /> */}
+      <Shop />
+    </>
+  );
 };
 
 export default App;
