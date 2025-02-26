@@ -1,12 +1,25 @@
-import React from "react";
-
 const Home = () => {
   return (
     <>
       <div className="flex flex-col items-center h-[80vh] center justify-center ">
-        <div>
-          <img className="w-120" src="./src/assets/ipod.png" alt="ipod"></img>
+        <div className="relative w-120 mx-auto">
+          {/* iPod Image */}
+          <img
+            className="w-full relative z-2"
+            src="./src/assets/ipod.png"
+            alt="ipod"
+          />
+
+          {/* Album Cover Inside iPod */}
+          <div className="absolute top-[30.3%] left-[6.5%] w-[48%] h-[40%] overflow-hidden">
+            <img
+              className="w-full h-full object-cover rounded"
+              src="./src/assets/take-care-drake-drake.webp"
+              alt="album cover"
+            />
+          </div>
         </div>
+
         <div className="flex flex-col items-center">
           <h1 className="text-5xl font-bold">Welcome to THE Music Store!</h1>
           <span className="text-2xl pt-3">
