@@ -1,5 +1,11 @@
+import Navbar from "./Navbar";
 const Cart = () => {
-  return <>cart is empty</>;
+  return (
+    <>
+      <Navbar count={0} />
+      cart is empty
+    </>
+  );
 };
 
 export default Cart;

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Card = (props) => {
   return (
     <>
@@ -34,7 +32,10 @@ const Card = (props) => {
             –
           </button>
         </span>
-        <button className="bg-blue-500 cursor-pointer text-sm hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
+        <button
+          onClick={props.addToCart}
+          className="bg-blue-500 cursor-pointer text-sm hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl"
+        >
           Add to Cart
         </button>
       </div>

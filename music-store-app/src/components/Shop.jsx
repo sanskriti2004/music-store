@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Navbar from "./Navbar";
 import Card from "./Card";
 
 const Shop = () => {
@@ -9,6 +10,15 @@ const Shop = () => {
     ["Jazz", false],
     ["Rock", false],
   ]);
+
+  const [cartItems, setCartItems] = useState({});
+
+  const addToCart = (item) => {
+    setCartItems((prevItems) => ({
+      ...prevItems,
+      [item.album]: (prevItems[item.album] || 0) + 1,
+    }));
+  };
 
   const [counts, setCounts] = useState(Array(15).fill(0)); // Adjust count array size
 
@@ -154,34 +164,38 @@ const Shop = () => {
       : info.filter((item) => item.genre === selectedGenre);
 
   return (
-    <div>
-      <div className="flex items-center justify-center p-5 m-5 space-x-5">
-        {genres.map(([name, isChecked]) => (
-          <button
-            onClick={() => setGenre(name)}
-            key={name}
-            className={isChecked ? checked : unChecked}
-          >
-            {name}
-          </button>
-        ))}
+    <>
+      <Navbar cartCount={Object.values(cartItems).reduce((a, b) => a + b, 0)} />
+      <div>
+        <div className="flex items-center justify-center p-5 m-5 space-x-5">
+          {genres.map(([name, isChecked]) => (
+            <button
+              onClick={() => setGenre(name)}
+              key={name}
+              className={isChecked ? checked : unChecked}
+            >
+              {name}
+            </button>
+          ))}
+        </div>
+        <div className="flex flex-wrap justify-center items-center gap-10">
+          {filteredInfo.map((item, index) => (
+            <Card
+              key={item.album}
+              source={item.source}
+              album={item.album}
+              artist={item.artist}
+              genre={item.genre}
+              price={item.price}
+              count={counts[index]}
+              increment={() => increment(index)}
+              decrement={() => decrement(index)}
+              addToCart={() => addToCart(index)}
+            />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredInfo.map((item, index) => (
-          <Card
-            key={item.album}
-            source={item.source}
-            album={item.album}
-            artist={item.artist}
-            genre={item.genre}
-            price={item.price}
-            count={counts[index]}
-            increment={() => increment(index)}
-            decrement={() => decrement(index)}
-          />
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 
