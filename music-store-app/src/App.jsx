@@ -1,17 +1,17 @@
-import Navbar from "./components/Navbar";
-// import Home from "./components/Home";
+import Home from "./components/Home";
 // import Shop from "./components/Shop";
-import Cart from "./components/Cart";
+// import Cart from "./components/Cart";
+// import NotFound from "./components/NotFound"; // Optional 404 Page
+import "./index.css";
+import Navbar from "./components/Navbar";
 
-const App = () => {
+function App() {
   return (
     <>
       <Navbar count={0} />
-      {/* <Home />
-      <Shop /> */}
-      <Cart />
+      <Home />
     </>
   );
-};
+}
 
 export default App;
